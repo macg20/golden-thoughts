@@ -23,7 +23,7 @@ public class GoldThoughtBufferEntity {
             name = "gold_thought_buffer_generator",
             strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
             parameters = {
-                    @Parameter(name = "sequence_name", value = "gold_thought_id_seq"),
+                    @Parameter(name = "sequence_name", value = "gold_thought_buff_id_seq"),
                     @Parameter(name = "initial_value", value = "1"),
                     @Parameter(name = "increment_size", value = "1")
             }

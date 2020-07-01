@@ -18,9 +18,9 @@ import java.time.ZonedDateTime;
 public class GoldThoughtEntity {
 
     @Id
-    @GeneratedValue(generator = "gold-thought_generator")
+    @GeneratedValue(generator = "gold_thought_generator")
     @GenericGenerator(
-            name = "gold_thought_buffer_generator",
+            name = "gold_thought_generator",
             strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
             parameters = {
                     @Parameter(name = "sequence_name", value = "gold_thought_id_seq"),

@@ -1,5 +1,6 @@
 package pl.mgie.app.goldenthoughts.backend.presentation;
 
+import io.swagger.annotations.ApiOperation;
 import javassist.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,8 +29,9 @@ class GoldThoughtsRestService {
     private GoldThoughtRepository goldThoughtRepository;
     private GoldThoughtBufferRepository goldThoughtBufferRepository;
 
-    public GoldThoughtsRestService(GoldThoughtRepository goldThoughtRepository) {
+    public GoldThoughtsRestService(GoldThoughtRepository goldThoughtRepository, GoldThoughtBufferRepository goldThoughtBufferRepository) {
         this.goldThoughtRepository = goldThoughtRepository;
+        this.goldThoughtBufferRepository = goldThoughtBufferRepository;
     }
 
     @GetMapping(params = {"page", "size"})
@@ -47,10 +49,11 @@ class GoldThoughtsRestService {
     }
 
     @GetMapping(value = "/admin/buffer", params = {"page", "size"})
+    @ApiOperation(value ="Endpoint pokazuje dane buforowe", hidden = true)
     ResponseEntity<Page<GoldThoughtBufferDto>> findAllBuffersPagination(@RequestParam(name = "page", required = false) int page) {
         PageRequest.of(page, DEFAULT_PAGE_SIZE);
 
-        Page<GoldThoughtBufferDto> goldenThoughtsPage = goldThoughtRepository
+        Page<GoldThoughtBufferDto> goldenThoughtsPage = goldThoughtBufferRepository
                 .findAll(PageRequest.of(page, DEFAULT_PAGE_SIZE)).map(e -> {
                     GoldThoughtBufferDto dto = new GoldThoughtBufferDto();
                     dto.setDescription(e.getDescription());
@@ -73,6 +76,7 @@ class GoldThoughtsRestService {
     }
 
     @PostMapping("/admin/buffer")
+    @ApiOperation(value ="Endpoint akceptuje dane buforowe", hidden = true)
     ResponseEntity accept(AcceptRequestDto acceptRequestDto) throws NotFoundException {
 
         Optional<GoldThoughtBufferEntity> buffer = goldThoughtBufferRepository.findById(acceptRequestDto.getId());
