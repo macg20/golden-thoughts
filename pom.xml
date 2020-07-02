@@ -32,7 +32,7 @@
                 <configuration>
                     <appName>goldenthoughts</appName>
                     <processTypes>
-                        <web>java -jar -Dserver.port=$PORT backend/target/${project.build.finalName}.jar</web>
+                        <web>java -jar -Dserver.port=$PORT backend-0.0.1-SNAPSHOT.jar</web>
                     </processTypes>
                     <includeTarget>false</includeTarget>
                     <includes>
