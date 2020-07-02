@@ -36,7 +36,7 @@
                     </processTypes>
                     <includeTarget>false</includeTarget>
                     <includes>
-                        <include>backend/target/${project.build.finalName}.jar</include>
+                        <include>backend/target/backend-0.0.1-SNAPSHOT.jar</include>
                     </includes>
                 </configuration>
             </plugin>
