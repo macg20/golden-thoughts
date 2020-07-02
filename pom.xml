@@ -34,6 +34,10 @@
                     <processTypes>
                         <web>java -jar -Dserver.port=$PORT backend/target/${project.build.finalName}.jar</web>
                     </processTypes>
+                    <includeTarget>false</includeTarget>
+                    <includes>
+                        <include>backend/target/${project.build.finalName}.jar</include>
+                    </includes>
                 </configuration>
             </plugin>
         </plugins>
