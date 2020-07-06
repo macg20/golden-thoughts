@@ -22,6 +22,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/goldenthoughts")
+@CrossOrigin(origins = {"https://goldenthoughts.herokuapp.com/", "http://localhost:4200", "http://localhost:8080" })
 class GoldThoughtsRestService {
 
     private static final int DEFAULT_PAGE_SIZE = 20;
